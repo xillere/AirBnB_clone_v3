@@ -3,12 +3,6 @@
 
 import models
 from models import storage
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Reviewl
 from flask import Blueprint, render_template, jsonify
 from api.v1.views import app_views
 
@@ -19,12 +13,12 @@ def son():
     return jsonify({"status": "OK"})
 
 
-@app_views.route('/stats', methods=['GET'])
+@app_views.route("/stats", methods=['GET'])
 def count():
     """returns number of objects per type"""
-    todolist = {'states': State, 'users': User,
-                'amenities': Amenity, 'cities': City,
-                'places': Place, 'reviews': Review}
+    todolist = {"states": State, "users": User,
+                "amenities": Amenity, "cities": City,
+                "places": Place, "reviews": Review}
     cdict = {}
     for cls in todolist:
         cdict[cls] = storage.count(todolist[cls])
