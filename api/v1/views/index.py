@@ -9,3 +9,14 @@ from api.v1.views import app_views
 def son():
     """create a route"""
     return jsonify({"status": "OK"})
+
+@app_views.route('/stats', methods=['GET'])
+def count():
+    """returns number of objects per type"""
+    todolist = {'states': State, 'users': User,
+            'amenities': Amenity, 'cities': City,
+            'places': Place, 'reviews': Review}
+    cdict = {}
+    for cls in todolist:
+        cdict[cls] = storage.count(todolist[cls])
+    return jsonify(cdict)
