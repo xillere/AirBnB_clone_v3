@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """create  an endpoint (route) will be to return the status of your API"""
 
+import models
+from models import storage
 from flask import Blueprint, render_template, jsonify
 from api.v1.views import app_views
 
@@ -9,6 +11,7 @@ from api.v1.views import app_views
 def son():
     """create a route"""
     return jsonify({"status": "OK"})
+
 
 @app_views.route('/stats', methods=['GET'])
 def count():
