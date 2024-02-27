@@ -19,7 +19,6 @@ def count():
     todolist = {"states": State, "users": User,
                 "amenities": Amenity, "cities": City,
                 "places": Place, "reviews": Review}
-    cdict = {}
     for cls in todolist:
-        cdict[cls] = storage.count(todolist[cls])
-    return jsonify(cdict)
+        todolist[cls] = storage.count(todolist[cls])
+    return jsonify(todolist)
