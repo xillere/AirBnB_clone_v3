@@ -17,8 +17,8 @@ def son():
 def count():
     """returns number of objects per type"""
     todolist = {'states': State, 'users': User,
-            'amenities': Amenity, 'cities': City,
-            'places': Place, 'reviews': Review}
+                'amenities': Amenity, 'cities': City,
+                'places': Place, 'reviews': Review}
     cdict = {}
     for cls in todolist:
         cdict[cls] = storage.count(todolist[cls])
