@@ -16,9 +16,9 @@ def son():
 @app_views.route("/stats", methods=['GET'])
 def count():
     """returns number of objects per type"""
-    todolist = {"states": State, "users": User,
-                "amenities": Amenity, "cities": City,
-                "places": Place, "reviews": Review}
-    for cls in todolist:
-        todolist[cls] = storage.count(todolist[cls])
+    todolist = {"states": storage.count('State'), "users": storage.count('User'),
+                "amenities": storage.count('Amenity'), "cities": storage.count('City'),
+                "places": storage.count('Place'), "reviews": storage.count('Review')}
+    # for cls in todolist:
+        # todolist[cls] = storage.count(todolist[cls])
     return jsonify(todolist)
